@@ -3,7 +3,15 @@
   "name" : "SDD1",
   "type" : "SSD",
   "brand" : "Kigstone",
-  "price" : 60000.0,
-  "stock" : 0,
+  "price" : 111.0,
+  "stock" : 1,
+  "state" : "new"
+}, {
+  "id" : "224e4f6e-c0ce-4c90-82b1-dff85aebb011",
+  "name" : "Rtx 2060",
+  "type" : "GPU",
+  "brand" : "RTX",
+  "price" : 1222.0,
+  "stock" : 1,
   "state" : "new"
 } ]

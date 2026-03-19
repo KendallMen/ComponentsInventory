@@ -31,7 +31,7 @@ public class SaleController {
     @FXML
     public void initialize() {
 
-        // Configurar política de redimensionamiento de columnas
+        // Usar CONSTRAINED_RESIZE_POLICY para distribuir el espacio equitativamente
         tableItems.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         cbCustomer.getItems().setAll(customerService.getAllCustomers());
@@ -81,6 +81,7 @@ public class SaleController {
 
             items.add(item);
             tableItems.getItems().setAll(items);
+
 
             txtQuantity.clear();
 

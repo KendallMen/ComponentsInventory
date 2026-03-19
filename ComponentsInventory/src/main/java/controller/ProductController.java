@@ -9,6 +9,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.util.List;
 import java.util.UUID;
 
 public class ProductController {
@@ -32,7 +33,7 @@ public class ProductController {
     @FXML
     public void initialize() {
 
-        // Configurar política de redimensionamiento de columnas
+        // Usar CONSTRAINED_RESIZE_POLICY para distribuir el espacio equitativamente
         tableProducts.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         cbType.getItems().setAll(ProductType.values());

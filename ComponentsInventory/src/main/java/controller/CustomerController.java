@@ -23,7 +23,7 @@ public class CustomerController {
     @FXML
     public void initialize() {
 
-        // Configurar política de redimensionamiento de columnas
+        // Usar CONSTRAINED_RESIZE_POLICY para distribuir el espacio equitativamente
         tableCustomers.setColumnResizePolicy(javafx.scene.control.TableView.CONSTRAINED_RESIZE_POLICY);
 
         colName.setCellValueFactory(data ->
@@ -41,6 +41,14 @@ public class CustomerController {
         });
 
         loadTable();
+    }
+
+    // ...existing code...
+
+    private void loadTable() {
+        List<Customer> customers = service.getAllCustomers();
+        tableCustomers.getItems().clear();
+        tableCustomers.getItems().addAll(customers);
     }
 
     @FXML
@@ -99,12 +107,6 @@ public class CustomerController {
         } catch (Exception e) {
             showError(e.getMessage());
         }
-    }
-
-    private void loadTable() {
-        List<Customer> customers = service.getAllCustomers();
-        tableCustomers.getItems().clear();
-        tableCustomers.getItems().addAll(customers);
     }
 
 

@@ -3,30 +3,50 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
 
 <VBox spacing="15" xmlns:fx="http://javafx.com/fxml"
       fx:controller="controller.SaleController"
-      style="-fx-padding: 20;">
+      style="-fx-padding: 25; -fx-background-color: #0f1419;"
+      VBox.vgrow="ALWAYS">
 
     <Label text="New Sale"
-           style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #60a5fa;" />
 
-    <HBox spacing="10">
-        <ComboBox fx:id="cbCustomer" promptText="Select customer"/>
-        <ComboBox fx:id="cbProduct" promptText="Select product"/>
-        <TextField fx:id="txtQuantity" promptText="Quantity"/>
-        <Button text="Add Item" onAction="#handleAddItem"/>
+    <VBox spacing="10" style="-fx-background-color: #1a1f2e; -fx-border-radius: 12; -fx-background-radius: 12; -fx-border-color: #3b82f6; -fx-border-width: 1; -fx-padding: 20;">
+        <Label text="Sale Details" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #60a5fa;"/>
+
+        <HBox spacing="15">
+            <Label text="Customer:" style="-fx-text-fill: #cbd5e1; -fx-min-width: 100;"/>
+            <ComboBox fx:id="cbCustomer" promptText="Select customer" HBox.hgrow="ALWAYS" prefWidth="300"/>
+        </HBox>
+
+        <HBox spacing="15">
+            <Label text="Product:" style="-fx-text-fill: #cbd5e1; -fx-min-width: 100;"/>
+            <ComboBox fx:id="cbProduct" promptText="Select product" HBox.hgrow="ALWAYS" prefWidth="300"/>
+        </HBox>
+
+        <HBox spacing="15">
+            <Label text="Quantity:" style="-fx-text-fill: #cbd5e1; -fx-min-width: 100;"/>
+            <TextField fx:id="txtQuantity" promptText="0" prefWidth="150"/>
+            <Button text="Add Item" onAction="#handleAddItem" style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-padding: 10 20; -fx-font-weight: 600; -fx-border-radius: 8; -fx-background-radius: 8;"/>
+        </HBox>
+    </VBox>
+
+    <VBox spacing="10" VBox.vgrow="ALWAYS">
+        <Label text="Sale Items" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #60a5fa;"/>
+        <TableView fx:id="tableItems" prefHeight="250" style="-fx-background-color: #1a1f2e; -fx-border-color: #3b82f6; -fx-border-width: 1; -fx-border-radius: 12; -fx-background-radius: 12;" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colProduct" text="Product" prefWidth="200"/>
+                <TableColumn fx:id="colQuantity" text="Quantity" prefWidth="150"/>
+                <TableColumn fx:id="colPrice" text="Price" prefWidth="150"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <HBox spacing="10" style="-fx-padding: 10 0 0 0;">
+        <Button text="Confirm Sale" onAction="#handleConfirmSale" style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-padding: 12 30; -fx-font-weight: 600; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-size: 14px;"/>
     </HBox>
 
-    <TableView fx:id="tableItems" prefHeight="250">
-        <columns>
-            <TableColumn fx:id="colProduct" text="Product" prefWidth="200"/>
-            <TableColumn fx:id="colQuantity" text="Quantity" prefWidth="150"/>
-            <TableColumn fx:id="colPrice" text="Price" prefWidth="150"/>
-        </columns>
-    </TableView>
-
-    <!-- 🔹 ACTION -->
-    <Button text="Confirm Sale" onAction="#handleConfirmSale"/>
-
 </VBox>
+

@@ -2,6 +2,7 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -13,7 +14,12 @@ public class MainController {
 
     @FXML
     public void initialize() {
-        showProducts(); // pantalla inicial
+        showProducts(); // pantalla inicial es products
+    }
+
+    @FXML
+    public void showDashboard() {
+        loadView("/view/dashboard.fxml");
     }
 
     @FXML
@@ -33,7 +39,7 @@ public class MainController {
 
     private void loadView(String path) {
         try {
-            VBox view = FXMLLoader.load(getClass().getResource(path));
+            Node view = FXMLLoader.load(getClass().getResource(path));
             contentArea.getChildren().setAll(view);
         } catch (IOException e) {
             e.printStackTrace();

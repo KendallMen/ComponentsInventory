@@ -401,3 +401,24 @@
     -fx-background-color: #60a5fa;
 }
 
+/* ════════════════════════════════════════════════════════════════════ */
+/* 📊 CHART LEGEND - Estilos para leyendas de gráficas */
+/* ════════════════════════════════════════════════════════════════════ */
+
+.chart-legend {
+    -fx-background-color: #cbd5e1;
+    -fx-text-fill: #1a1f2e;
+    -fx-font-weight: bold;
+    -fx-border-color: #3b82f6;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-padding: 10;
+}
+
+.chart-legend .label {
+    -fx-text-fill: #1a1f2e;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+

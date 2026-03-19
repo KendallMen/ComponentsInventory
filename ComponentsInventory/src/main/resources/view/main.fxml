@@ -3,16 +3,20 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.geometry.Insets?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="controller.MainController">
 
     <!-- 🔹 SIDEBAR -->
     <left>
-        <VBox spacing="10" styleClass="sidebar">
-            <Button text="Products" onAction="#showProducts"/>
-            <Button text="Customers" onAction="#showCustomers"/>
-            <Button text="Sales" onAction="#showSales"/>
+        <VBox spacing="10" styleClass="sidebar" style="-fx-padding: 20;">
+            <Button text="📦 Products" onAction="#showProducts" style="-fx-padding: 12 20; -fx-font-size: 13px;"/>
+            <Button text="👥 Customers" onAction="#showCustomers" style="-fx-padding: 12 20; -fx-font-size: 13px;"/>
+            <Button text="💰 Sales" onAction="#showSales" style="-fx-padding: 12 20; -fx-font-size: 13px;"/>
+            <Separator style="-fx-padding: 10 0;"/>
+            <Button text="📊 Dashboard" onAction="#showDashboard" style="-fx-padding: 12 20; -fx-font-size: 13px;"/>
         </VBox>
     </left>
 
@@ -22,3 +26,4 @@
     </center>
 
 </BorderPane>
+

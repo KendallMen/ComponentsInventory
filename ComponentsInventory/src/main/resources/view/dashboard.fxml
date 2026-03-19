@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:id="dashboardContainer"
+      spacing="15"
+      style="-fx-background-color: #0f1419; -fx-padding: 25;"
+      fx:controller="controller.DashboardController"
+      VBox.vgrow="ALWAYS"/>
+
+

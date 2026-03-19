@@ -9,52 +9,55 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
 
 <VBox spacing="15" xmlns:fx="http://javafx.com/fxml"
       fx:controller="controller.ProductController"
-      style="-fx-padding: 20;">
+      style="-fx-padding: 25; -fx-background-color: #0f1419;"
+      VBox.vgrow="ALWAYS">
 
-    <!-- 🔹 TITLE -->
-    <Label text="Component Inventory"
-           style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+    <Label text="Products Inventory"
+           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #60a5fa;" />
 
-    <!-- 🔹 FORM -->
-    <GridPane hgap="10" vgap="10">
+    <VBox spacing="10" style="-fx-background-color: #1a1f2e; -fx-border-radius: 12; -fx-background-radius: 12; -fx-border-color: #3b82f6; -fx-border-width: 1; -fx-padding: 20;">
+        <Label text="Product Information" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #60a5fa;"/>
 
-        <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-        <TextField fx:id="txtName" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <GridPane hgap="15" vgap="15">
+            <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-text-fill: #cbd5e1;"/>
+            <TextField fx:id="txtName" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="250"/>
 
-        <Label text="Type:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-        <ComboBox fx:id="cbType" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Type:" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-text-fill: #cbd5e1;"/>
+            <ComboBox fx:id="cbType" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="250"/>
 
-        <Label text="Brand:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-        <TextField fx:id="txtBrand" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="Brand:" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-text-fill: #cbd5e1;"/>
+            <TextField fx:id="txtBrand" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="250"/>
 
-        <Label text="Price:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-        <TextField fx:id="txtPrice" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+            <Label text="Price:" GridPane.rowIndex="0" GridPane.columnIndex="2" style="-fx-text-fill: #cbd5e1;"/>
+            <TextField fx:id="txtPrice" GridPane.rowIndex="0" GridPane.columnIndex="3" prefWidth="200"/>
 
-        <Label text="Stock:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-        <TextField fx:id="txtStock" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+            <Label text="Stock:" GridPane.rowIndex="1" GridPane.columnIndex="2" style="-fx-text-fill: #cbd5e1;"/>
+            <TextField fx:id="txtStock" GridPane.rowIndex="1" GridPane.columnIndex="3" prefWidth="200"/>
+        </GridPane>
 
-    </GridPane>
+        <HBox spacing="10" style="-fx-padding: 10 0 0 0;">
+            <Button text="Add" onAction="#handleAdd" style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-padding: 10 20; -fx-font-weight: 600; -fx-border-radius: 8; -fx-background-radius: 8;"/>
+            <Button text="Update" onAction="#handleUpdate" style="-fx-background-color: #3b82f6; -fx-text-fill: white; -fx-padding: 10 20; -fx-font-weight: 600; -fx-border-radius: 8; -fx-background-radius: 8;"/>
+            <Button text="Delete" onAction="#handleDelete" style="-fx-background-color: #ef4444; -fx-text-fill: white; -fx-padding: 10 20; -fx-font-weight: 600; -fx-border-radius: 8; -fx-background-radius: 8;"/>
+        </HBox>
+    </VBox>
 
-    <!-- 🔹 BUTTONS -->
-    <HBox spacing="10">
-        <Button text="Add" onAction="#handleAdd"/>
-        <Button text="Update" onAction="#handleUpdate"/>
-        <Button text="Delete" onAction="#handleDelete"/>
-    </HBox>
-
-    <!-- 🔹 TABLE -->
-    <TableView fx:id="tableProducts" prefHeight="300">
-        <columns>
-            <TableColumn fx:id="colName" text="Name" prefWidth="150"/>
-            <TableColumn fx:id="colType" text="Type" prefWidth="120"/>
-            <TableColumn fx:id="colBrand" text="Brand" prefWidth="150"/>
-            <TableColumn fx:id="colPrice" text="Price" prefWidth="120"/>
-            <TableColumn fx:id="colStock" text="Stock" prefWidth="120"/>
-        </columns>
-
-    </TableView>
+    <VBox spacing="10" VBox.vgrow="ALWAYS">
+        <Label text="Products List" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #60a5fa;"/>
+        <TableView fx:id="tableProducts" prefHeight="300" style="-fx-background-color: #1a1f2e; -fx-border-color: #3b82f6; -fx-border-width: 1; -fx-border-radius: 12; -fx-background-radius: 12;" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colName" text="Name" prefWidth="150"/>
+                <TableColumn fx:id="colType" text="Type" prefWidth="120"/>
+                <TableColumn fx:id="colBrand" text="Brand" prefWidth="150"/>
+                <TableColumn fx:id="colPrice" text="Price" prefWidth="120"/>
+                <TableColumn fx:id="colStock" text="Stock" prefWidth="120"/>
+            </columns>
+        </TableView>
+    </VBox>
 
 </VBox>
+
