@@ -80,14 +80,14 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id='" + id + '\'' +
-                ", nombre='" + name + '\'' +
-                ", tipo='" + type + '\'' +
-                ", marca='" + brand + '\'' +
-                ", precio=" + price +
-                ", stock=" + stock +
-                ", estado='" + state + '\'' +
-                '}';
+        String n = name != null ? name.trim() : "";
+        String b = brand != null ? brand.trim() : "";
+        String p = String.format("%.2f", price);
+
+        if (!n.isEmpty() && !b.isEmpty()) {
+            return n + " - " + b + " ($" + p + ")";
+        }
+        return !n.isEmpty() ? n : (id != null ? id : "");
     }
+
 }

@@ -1,15 +1,41 @@
 [ {
-  "id" : "v1",
+  "id" : "d316af0b-a518-43f1-bd2d-1e9ec475ee7b",
   "costumerId" : "c1",
   "items" : [ {
-    "productoId" : "p1",
-    "cantidad" : 2,
-    "precioUnitario" : 0.0
-  }, {
-    "productoId" : "p2",
-    "cantidad" : 1,
-    "precioUnitario" : 0.0
+    "productId" : "74ec96cf-7fac-4f7f-8f46-df125a0373eb",
+    "amount" : 1,
+    "unitPrice" : 60000.0
   } ],
-  "total" : 0.0,
-  "date" : [ 2026, 3, 18 ]
+  "total" : 60000.0,
+  "date" : [ 2026, 3, 19 ]
+}, {
+  "id" : "9646d57d-810e-4647-a108-68afe457a179",
+  "costumerId" : "c1",
+  "items" : [ {
+    "productId" : "74ec96cf-7fac-4f7f-8f46-df125a0373eb",
+    "amount" : 1,
+    "unitPrice" : 60000.0
+  } ],
+  "total" : 60000.0,
+  "date" : [ 2026, 3, 19 ]
+}, {
+  "id" : "fe4afab2-a439-42f4-a43d-ee4486d3aa64",
+  "costumerId" : "6154c29f-213d-46a7-ba2b-70eb5fa33665",
+  "items" : [ {
+    "productId" : "74ec96cf-7fac-4f7f-8f46-df125a0373eb",
+    "amount" : 1,
+    "unitPrice" : 60000.0
+  } ],
+  "total" : 60000.0,
+  "date" : [ 2026, 3, 19 ]
+}, {
+  "id" : "21ddcaf5-7e2f-4f01-8aac-6eeb5a0d618b",
+  "costumerId" : "6154c29f-213d-46a7-ba2b-70eb5fa33665",
+  "items" : [ {
+    "productId" : "74ec96cf-7fac-4f7f-8f46-df125a0373eb",
+    "amount" : 1,
+    "unitPrice" : 60000.0
+  } ],
+  "total" : 60000.0,
+  "date" : [ 2026, 3, 19 ]
 } ]

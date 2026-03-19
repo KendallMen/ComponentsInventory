@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+
+<VBox spacing="15" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.SaleController"
+      style="-fx-padding: 20;">
+
+    <Label text="New Sale"
+           style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <HBox spacing="10">
+        <ComboBox fx:id="cbCustomer" promptText="Select customer"/>
+        <ComboBox fx:id="cbProduct" promptText="Select product"/>
+        <TextField fx:id="txtQuantity" promptText="Quantity"/>
+        <Button text="Add Item" onAction="#handleAddItem"/>
+    </HBox>
+
+    <TableView fx:id="tableItems" prefHeight="250">
+        <columns>
+            <TableColumn fx:id="colProduct" text="Product" prefWidth="200"/>
+            <TableColumn fx:id="colQuantity" text="Quantity" prefWidth="150"/>
+            <TableColumn fx:id="colPrice" text="Price" prefWidth="150"/>
+        </columns>
+    </TableView>
+
+    <!-- 🔹 ACTION -->
+    <Button text="Confirm Sale" onAction="#handleConfirmSale"/>
+
+</VBox>

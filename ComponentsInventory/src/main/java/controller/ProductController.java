@@ -13,145 +13,188 @@ import java.util.UUID;
 
 public class ProductController {
 
-    @FXML private TextField txtNombre;
-    @FXML private ComboBox<ProductType> cbTipo;
-    @FXML private TextField txtMarca;
-    @FXML private TextField txtPrecio;
+    @FXML private TextField txtName;
+    @FXML private ComboBox<ProductType> cbType;
+    @FXML private TextField txtBrand;
+    @FXML private TextField txtPrice;
     @FXML private TextField txtStock;
 
-    @FXML private TableView<Product> tablaProductos;
-    @FXML private TableColumn<Product, String> colNombre;
-    @FXML private TableColumn<Product, String> colTipo;
-    @FXML private TableColumn<Product, String> colMarca;
-    @FXML private TableColumn<Product, Double> colPrecio;
+    @FXML private TableView<Product> tableProducts;
+    @FXML private TableColumn<Product, String> colName;
+    @FXML private TableColumn<Product, String> colType;
+    @FXML private TableColumn<Product, String> colBrand;
+    @FXML private TableColumn<Product, Double> colPrice;
     @FXML private TableColumn<Product, Integer> colStock;
-    private Product productoSeleccionado;
+    private Product SelectedProduct;
 
     private ProductService service = new ProductService();
 
     @FXML
     public void initialize() {
 
-        cbTipo.getItems().setAll(ProductType.values());
+        // Configurar política de redimensionamiento de columnas
+        tableProducts.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        colNombre.setCellValueFactory(data ->
+        cbType.getItems().setAll(ProductType.values());
+
+        colName.setCellValueFactory(data ->
                 new SimpleStringProperty(data.getValue().getName()));
 
-        colTipo.setCellValueFactory(data ->
+        colType.setCellValueFactory(data ->
                 new SimpleStringProperty(data.getValue().getType().name())); // enum
 
-        colMarca.setCellValueFactory(data ->
+        colBrand.setCellValueFactory(data ->
                 new SimpleStringProperty(data.getValue().getBrand()));
 
-        colPrecio.setCellValueFactory(data ->
+        colPrice.setCellValueFactory(data ->
                 new SimpleDoubleProperty(data.getValue().getPrice()).asObject());
 
         colStock.setCellValueFactory(data ->
                 new SimpleIntegerProperty(data.getValue().getStock()).asObject());
 
-        tablaProductos.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+        tableProducts.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
 
             if (newVal != null) {
-                productoSeleccionado = newVal;
+                SelectedProduct = newVal;
 
-                txtNombre.setText(newVal.getName());
-                cbTipo.setValue(newVal.getType());
-                txtMarca.setText(newVal.getBrand());
-                txtPrecio.setText(String.valueOf(newVal.getPrice()));
+                txtName.setText(newVal.getName());
+                cbType.setValue(newVal.getType());
+                txtBrand.setText(newVal.getBrand());
+                txtPrice.setText(String.valueOf(newVal.getPrice()));
                 txtStock.setText(String.valueOf(newVal.getStock()));
             }
         });
 
-        cargarTabla();
+        chargeTable();
     }
 
     @FXML
-    public void handleAgregar() {
+    public void handleAdd() {
         try {
 
-            // 🔴 Validación básica UI
-            if (cbTipo.getValue() == null) {
-                throw new IllegalArgumentException("Seleccione un tipo");
+            if (txtName.getText() == null || txtName.getText().isEmpty()) {
+                throw new IllegalArgumentException("Product name cannot be empty");
+            }
+
+            if (cbType.getValue() == null) {
+                throw new IllegalArgumentException("Select product type");
+            }
+
+            if (txtBrand.getText() == null || txtBrand.getText().isEmpty()) {
+                throw new IllegalArgumentException("Product brand cannot be empty");
+            }
+
+            if (txtPrice.getText() == null || txtPrice.getText().isEmpty()) {
+                throw new IllegalArgumentException("Product price cannot be empty");
+            }
+
+            if (txtStock.getText() == null || txtStock.getText().isEmpty()) {
+                throw new IllegalArgumentException("Product stock cannot be empty");
             }
 
             Product p = new Product(
                     UUID.randomUUID().toString(),
-                    txtNombre.getText(),
-                    cbTipo.getValue(), // 🔥 ENUM
-                    txtMarca.getText(),
-                    Double.parseDouble(txtPrecio.getText()),
+                    txtName.getText(),
+                    cbType.getValue(),
+                    txtBrand.getText(),
+                    Double.parseDouble(txtPrice.getText()),
                     Integer.parseInt(txtStock.getText()),
-                    "nuevo"
+                    "new"
             );
 
             service.addProduct(p);
 
-            cargarTabla();
-            limpiarCampos();
+            chargeTable();
+            cleanFields();
 
         } catch (Exception e) {
-            mostrarError(e.getMessage());
+            showError(e.getMessage());
         }
     }
 
-    private void cargarTabla() {
-        tablaProductos.getItems().setAll(service.getAllProducts());
+    private void chargeTable() {
+        tableProducts.getItems().setAll(service.getAllProducts());
     }
 
-    private void limpiarCampos() {
-        txtNombre.clear();
-        cbTipo.setValue(null);
-        txtMarca.clear();
-        txtPrecio.clear();
+    private void cleanFields() {
+        txtName.clear();
+        cbType.setValue(null);
+        txtBrand.clear();
+        txtPrice.clear();
         txtStock.clear();
     }
 
     @FXML
-    public void handleEliminar() {
+    public void handleDelete() {
 
-        Product seleccionado = tablaProductos.getSelectionModel().getSelectedItem();
+        Product seleccionado = tableProducts.getSelectionModel().getSelectedItem();
 
         if (seleccionado == null) {
-            mostrarError("Seleccione un producto");
+            showError("Select product");
             return;
         }
 
         service.deleteProduct(seleccionado.getId());
 
-        cargarTabla();
+        chargeTable();
     }
 
     @FXML
-    public void handleActualizar() {
+    public void handleUpdate() {
 
-        if (productoSeleccionado == null) {
-            mostrarError("Seleccione un producto");
+        if (SelectedProduct == null) {
+            showError("Select product");
             return;
         }
 
         try {
-            Product actualizado = new Product(
-                    productoSeleccionado.getId(), // 🔥 MISMO ID
-                    txtNombre.getText(),
-                    cbTipo.getValue(),
-                    txtMarca.getText(),
-                    Double.parseDouble(txtPrecio.getText()),
+
+            if (txtName.getText() == null || txtName.getText().isBlank()) {
+                throw new IllegalArgumentException("Product name cannot be empty");
+            }
+
+            if (cbType.getValue() == null) {
+                throw new IllegalArgumentException("Select product type");
+            }
+
+            if (txtBrand.getText() == null || txtBrand.getText().isBlank()) {
+                throw new IllegalArgumentException("Product brand cannot be empty");
+            }
+
+            if (txtPrice.getText() == null || txtPrice.getText().isBlank()) {
+                throw new IllegalArgumentException("Product price cannot be empty");
+            }
+
+            if (txtStock.getText() == null || txtStock.getText().isBlank()) {
+                throw new IllegalArgumentException("Product stock cannot be empty");
+            }
+            Product update = new Product(
+                    SelectedProduct.getId(),
+                    txtName.getText(),
+                    cbType.getValue(),
+                    txtBrand.getText(),
+                    Double.parseDouble(txtPrice.getText()),
                     Integer.parseInt(txtStock.getText()),
-                    "nuevo"
+                    "new"
             );
 
-            service.updateProduct(actualizado);
+            service.updateProduct(update);
 
-            cargarTabla();
-            limpiarCampos();
-            productoSeleccionado = null;
+            chargeTable();
+            cleanFields();
 
+            SelectedProduct = null;
+
+        } catch (NumberFormatException e) {
+            showError("Price must be a decimal number and stock must be an integer");
+        } catch (IllegalArgumentException e) {
+            showError(e.getMessage());
         } catch (Exception e) {
-            mostrarError(e.getMessage());
+            showError("Unexpected error updating product");
         }
     }
 
-    private void mostrarError(String mensaje) {
+    private void showError(String mensaje) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(null);

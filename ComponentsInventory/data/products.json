@@ -4,6 +4,6 @@
   "type" : "SSD",
   "brand" : "Kigstone",
   "price" : 60000.0,
-  "stock" : 2,
-  "state" : "nuevo"
+  "stock" : 0,
+  "state" : "new"
 } ]

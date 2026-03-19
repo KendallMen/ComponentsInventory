@@ -22,20 +22,20 @@ public class SaleService {
 
         for (ItemSale item : sale.getItems()) {
 
-            Product producto = productRepo.searchById(item.getProductoId());
+            Product producto = productRepo.searchById(item.getProductId());
 
             if (producto == null) {
                 throw new IllegalArgumentException("Producto no existe");
             }
 
-            if (producto.getStock() < item.getCantidad()) {
+            if (producto.getStock() < item.getAmount()) {
                 throw new IllegalArgumentException("Stock insuficiente");
             }
 
-            producto.setStock(producto.getStock() - item.getCantidad());
+            producto.setStock(producto.getStock() - item.getAmount());
             productRepo.updateProduct(producto);
 
-            total += item.getCantidad() * item.getPrecioUnitario();
+            total += item.getAmount() * item.getUnitPrice();
         }
 
         sale.setTotal(total);

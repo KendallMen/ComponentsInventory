@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableView?>
+
+<VBox spacing="15" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.CustomerController"
+      style="-fx-padding: 20;">
+
+    <!-- 🔹 TITLE -->
+    <Label text="Customer Management"
+           style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <!-- 🔹 FORM -->
+    <GridPane hgap="10" vgap="10">
+
+        <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtName" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Phone:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtPhone" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    </GridPane>
+
+    <!-- 🔹 BUTTONS -->
+    <HBox spacing="10">
+        <Button text="Add" onAction="#handleAdd"/>
+        <Button text="Update" onAction="#handleUpdate"/>
+        <Button text="Delete" onAction="#handleDelete"/>
+    </HBox>
+
+    <!-- 🔹 TABLE -->
+    <TableView fx:id="tableCustomers" prefHeight="300">
+        <columns>
+            <TableColumn fx:id="colName" text="Name" prefWidth="250"/>
+            <TableColumn fx:id="colPhone" text="Phone" prefWidth="250"/>
+        </columns>
+
+    </TableView>
+
+</VBox>

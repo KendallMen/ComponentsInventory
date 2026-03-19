@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.MainController">
+
+    <!-- 🔹 SIDEBAR -->
+    <left>
+        <VBox spacing="10" styleClass="sidebar">
+            <Button text="Products" onAction="#showProducts"/>
+            <Button text="Customers" onAction="#showCustomers"/>
+            <Button text="Sales" onAction="#showSales"/>
+        </VBox>
+    </left>
+
+    <!-- 🔹 CONTENT -->
+    <center>
+        <VBox fx:id="contentArea" styleClass="content"/>
+    </center>
+
+</BorderPane>

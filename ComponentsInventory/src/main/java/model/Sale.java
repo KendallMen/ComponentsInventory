@@ -62,4 +62,11 @@ public class Sale {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        String d = date != null ? date.toString() : "N/A";
+        String t = String.format("%.2f", total);
+        return d + " - $" + t;
+    }
 }

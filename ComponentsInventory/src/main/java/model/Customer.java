@@ -1,14 +1,14 @@
 package model;
 
-public class Costumer {
+public class Customer {
 
     private String id;
     private String name;
     private String phoneNumber;
 
-    public Costumer() {}
+    public Customer() {}
 
-    public Costumer(String id, String name, String phoneNumber) {
+    public Customer(String id, String name, String phoneNumber) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -40,10 +40,12 @@ public class Costumer {
 
     @Override
     public String toString() {
-        return "Cliente{" +
-                "id='" + id + '\'' +
-                ", nombre='" + name + '\'' +
-                ", telefono='" + phoneNumber + '\'' +
-                '}';
+        String n = name != null ? name.trim() : "";
+        String p = phoneNumber != null ? phoneNumber.trim() : "";
+
+        if (!n.isEmpty() && !p.isEmpty()) {
+            return n + " - " + p;
+        }
+        return !n.isEmpty() ? n : (p.isEmpty() ? id : p);
     }
 }

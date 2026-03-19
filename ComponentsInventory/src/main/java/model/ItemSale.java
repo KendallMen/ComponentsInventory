@@ -2,41 +2,39 @@ package model;
 
 public class ItemSale {
 
-    private String productoId;
-    private int cantidad;
-    private double precioUnitario;
+    private String productId;
+    private int amount;
+    private double unitPrice;
 
     public ItemSale() {}
 
-    public ItemSale(String productoId, int cantidad, double precioUnitario) {
-        this.productoId = productoId;
-        this.cantidad = cantidad;
-        this.precioUnitario = precioUnitario;
+    public ItemSale(String productId, int amount, double unitPrice) {
+        this.productId = productId;
+        this.amount = amount;
+        this.unitPrice = unitPrice;
     }
 
-    // getters y setters
-
-    public String getProductoId() {
-        return productoId;
+    public double getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setProductoId(String productoId) {
-        this.productoId = productoId;
+    public void setUnitPrice(double unitePrice) {
+        this.unitPrice = unitePrice;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
-    public double getPrecioUnitario() {
-        return precioUnitario;
+    public String getProductId() {
+        return productId;
     }
 
-    public void setPrecioUnitario(double precioUnitario) {
-        this.precioUnitario = precioUnitario;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 }

@@ -11,10 +11,15 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
 
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/view/product.fxml")
+                getClass().getResource("/view/main.fxml")
         );
 
+
+
         Scene scene = new Scene(loader.load());
+        scene.getStylesheets().add(
+                getClass().getResource("/styles/app.css").toExternalForm()
+        );
 
         stage.setTitle("Inventario PC");
         stage.setScene(scene);
