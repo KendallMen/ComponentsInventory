@@ -20,7 +20,7 @@ public class JsonUtil {
         try {
             File file = new File(path);
 
-            if (!file.exists()) {
+            if (!file.exists() || file.length() == 0) {
                 return new ArrayList<>();
             }
 
@@ -34,6 +34,7 @@ public class JsonUtil {
 
     public static void writeJSON(String path, Object data) {
         try {
+
             mapper.writerWithDefaultPrettyPrinter()
                     .writeValue(new File(path), data);
         } catch (Exception e) {

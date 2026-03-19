@@ -4,27 +4,43 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import model.Product;
 import util.JsonUtil;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductRepository {
 
     private final String FILE_PATH = "data/products.json";
 
-    public List<Product> getAllProducts(){
+    public List<Product> getAllProducts() {
+        File file = new File(FILE_PATH);
+
+        if (!file.exists() || file.length() == 0) {
+            JsonUtil.writeJSON(FILE_PATH, new ArrayList<>());
+            return new ArrayList<>();
+        }
+
         return JsonUtil.readList(
                 FILE_PATH,
                 new TypeReference<List<Product>>() {}
         );
     }
 
-    public void saveProducts(List<Product> products){
+    public void saveAllProducts(List<Product> products){
         JsonUtil.writeJSON(FILE_PATH, products);
     }
+
+    public void saveProducts(Product product){
+        List<Product> products = getAllProducts();
+        products.add(product);
+        saveAllProducts(products);
+    }
+
 
     public void eliminateProduct(String id) {
         List<Product> products = getAllProducts();
         products.removeIf(product -> product.getId().equals(id));
-        saveProducts(products);
+        saveAllProducts(products);
     }
 
     public void updateProduct(Product updatedProduct) {
@@ -35,7 +51,7 @@ public class ProductRepository {
                 break;
             }
         }
-        saveProducts(products);
+        saveAllProducts(products);
     }
 
     public Product searchById(String id){
