@@ -4,6 +4,14 @@
   "type" : "SSD",
   "brand" : "Kingston",
   "price" : 35000.0,
-  "stock" : 5,
+  "stock" : 8,
+  "state" : "nuevo"
+}, {
+  "id" : "p2",
+  "name" : "RTX 3060",
+  "type" : "GPU",
+  "brand" : "Nvidia",
+  "price" : 250000.0,
+  "stock" : 4,
   "state" : "nuevo"
 } ]

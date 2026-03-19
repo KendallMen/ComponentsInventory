@@ -1,0 +1,15 @@
+[ {
+  "id" : "v1",
+  "costumerId" : "c1",
+  "items" : [ {
+    "productoId" : "p1",
+    "cantidad" : 2,
+    "precioUnitario" : 0.0
+  }, {
+    "productoId" : "p2",
+    "cantidad" : 1,
+    "precioUnitario" : 0.0
+  } ],
+  "total" : 0.0,
+  "date" : [ 2026, 3, 18 ]
+} ]

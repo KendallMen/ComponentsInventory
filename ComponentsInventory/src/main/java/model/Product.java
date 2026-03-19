@@ -77,4 +77,17 @@ public class Product {
     public void setState(String state) {
         this.state = state;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id='" + id + '\'' +
+                ", nombre='" + name + '\'' +
+                ", tipo='" + type + '\'' +
+                ", marca='" + brand + '\'' +
+                ", precio=" + price +
+                ", stock=" + stock +
+                ", estado='" + state + '\'' +
+                '}';
+    }
 }
