@@ -4,7 +4,7 @@ public class Product {
 
     private String id;
     private String name;
-    private String type;
+    private ProductType type;
     private String brand;
     private double price;
     private int stock;
@@ -12,7 +12,7 @@ public class Product {
 
     public Product() {}
 
-    public Product(String id, String name, String type, String brand, double price, int stock, String state) {
+    public Product(String id, String name, ProductType type, String brand, double price, int stock, String state) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -38,11 +38,11 @@ public class Product {
         this.name = name;
     }
 
-    public String getType() {
+    public ProductType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(ProductType type) {
         this.type = type;
     }
 
