@@ -1,17 +1,9 @@
 [ {
-  "id" : "p1",
-  "name" : "SSD Kingston",
+  "id" : "74ec96cf-7fac-4f7f-8f46-df125a0373eb",
+  "name" : "SDD1",
   "type" : "SSD",
-  "brand" : "Kingston",
-  "price" : 35000.0,
-  "stock" : 8,
-  "state" : "nuevo"
-}, {
-  "id" : "p2",
-  "name" : "RTX 3060",
-  "type" : "GPU",
-  "brand" : "Nvidia",
-  "price" : 250000.0,
-  "stock" : 4,
+  "brand" : "Kigstone",
+  "price" : 60000.0,
+  "stock" : 2,
   "state" : "nuevo"
 } ]
