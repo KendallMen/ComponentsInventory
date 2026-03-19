@@ -1,0 +1,9 @@
+[ {
+  "id" : "p1",
+  "name" : "SSD Kingston",
+  "type" : "SSD",
+  "brand" : "Kingston",
+  "price" : 35000.0,
+  "stock" : 5,
+  "state" : "nuevo"
+} ]

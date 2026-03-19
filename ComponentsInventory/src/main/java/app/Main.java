@@ -3,6 +3,7 @@ package app;
 import model.Product;
 import model.ProductType;
 import repository.ProductRepository;
+import service.ProductService;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        ProductRepository repo = new ProductRepository();
+        ProductService service = new ProductService();
 
         Product p = new Product(
                 "p1",
@@ -19,13 +20,13 @@ public class Main {
                 ProductType.SSD,
                 "Kingston",
                 35000,
-                10,
+                5,
                 "nuevo"
         );
 
-        repo.saveProducts(p);
+        service.addProduct(p);
+        System.out.println("Guardado");
 
-        System.out.println(repo.getAllProducts());
+        System.out.println(service.getAllProducts());
     }
-
 }
